@@ -18,16 +18,13 @@
 
   <div class="card-body">
     @if ($errors->any())
-      <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-              <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-      </div><br />
+        <div class="alert alert-danger">
+            <h6>{{$errors->first()}}</h6>
+        </div><br />
     @endif
-      <form method="post" action="{{ route('login') }}">
+      <form method="post" action="{{ route('auth') }}">
           <div class="form-group">
+              @csrf
               <label for="email">Email</label>
               <input type="email" class="form-control" name="email"/>
           </div>

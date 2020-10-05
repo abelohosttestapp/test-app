@@ -12,6 +12,9 @@ class LoginController extends Controller
 {
     public function index()
     {
+        if (Auth::check()) {
+            return redirect()->to('/posts');
+        }
         return view('login');
     }
     /**
@@ -25,15 +28,13 @@ class LoginController extends Controller
     {
         try {
             $credentials = $request->only('email', 'password');
-
             if (Auth::attempt($credentials)) {
                 // Authentication passed...
                 return redirect()->intended('posts');
-            } else {
-                exit('222');
             }
+            return redirect()->back()->withErrors(['Email or Pasword is invalid']);
         } catch (\Exception $e) {
-            print_r($e); exit;
+            print_r($e);
         }
     }
     

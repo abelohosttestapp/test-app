@@ -14,13 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('login');
-});
+//Route::get('/', function () {
+//    return view('login');
+//});
 
 Route::resource('posts', 'App\Http\Controllers\PostController')->middleware('auth');
 
+Route::get('/', [App\Http\Controllers\PostController::class, 'index'])->name('home')->middleware('auth');
 Route::get('login', [LoginController::class, 'index'])->name('login');
-Route::post('login', [LoginController::class, 'authenticate']);
+Route::post('login', [LoginController::class, 'authenticate'])->name('auth');
 Route::get('login/github', [LoginController::class, 'redirectToProvider']);
 Route::get('login/github/callback', [LoginController::class, 'handleProviderCallback']);
