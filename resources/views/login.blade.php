@@ -33,7 +33,7 @@
           </div>
           <div class="form-group">
               <label for="password">Password</label>
-              <input type="text" class="form-control" name="password"/>
+              <input type="password" class="form-control" name="password"/>
           </div>
           <button type="submit" class="btn btn-block btn-success">Sign In</button>
           <a href="/login/github" class="btn btn-block btn-info">Sign In With GitHub</a>
